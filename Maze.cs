@@ -46,19 +46,28 @@ namespace WindowsFormsApplication1
                 MazeCells[h] = new MazeCell[width];
                 for (int w = 0; w < width; w++)
                 {
-                    MazeCells[h][w] = new MazeCell(w, h);
-                }
-            }
+                    MazeCell mc = new MazeCell(w, h);
 
-            for (int w = 0; w < this.Width; w++)
-            {
-                ((List<MazeDirection>)MazeCells[0][w].BuildDirections).Remove(MazeDirection.Up);
-                ((List<MazeDirection>)MazeCells[this.Height - 1][w].BuildDirections).Remove(MazeDirection.Down);
-            }
-            for (int h = 0; h < this.Height; h++)
-            {
-                ((List<MazeDirection>)MazeCells[h][0].BuildDirections).Remove(MazeDirection.Left);
-                ((List<MazeDirection>)MazeCells[h][this.Width - 1].BuildDirections).Remove(MazeDirection.Right);
+                    if (h == 0)
+                    {
+                        ((List<MazeDirection>)mc.BuildDirections).Remove(MazeDirection.Up);
+                    }
+                    if (h == this.Height - 1)
+                    {
+                        ((List<MazeDirection>)mc.BuildDirections).Remove(MazeDirection.Down);
+                    }
+
+                    if (w == 0)
+                    {
+                        ((List<MazeDirection>)mc.BuildDirections).Remove(MazeDirection.Left);
+                    }
+                    if (w == this.Width - 1)
+                    {
+                       ((List<MazeDirection>)mc.BuildDirections).Remove(MazeDirection.Right);
+                    }
+
+                    MazeCells[h][w] = mc;
+                }
             }
         }
 
