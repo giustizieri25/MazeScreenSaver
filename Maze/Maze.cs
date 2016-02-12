@@ -16,15 +16,8 @@ namespace Maze
         public int Width { get; set; }
 
         public readonly int MazeSize;
-        public MazeCell[][] Cells { get; }
-        public int CellsCount { get; private set; }
-        public bool Completed
-        {
-            get
-            {
-                return this.CellsCount == this.MazeSize;
-            }
-        }
+        internal MazeCell[][] Cells { get; }
+
 
         #endregion
 
@@ -52,6 +45,7 @@ namespace Maze
             this.Width = width;
             this.MazeSize = height * width;
 
+            this.Cells = new MazeCell[height][];
             for (int h = 0; h < this.Heigth; h++)
             {
                 this.Cells[h] = new MazeCell[width];
@@ -75,25 +69,7 @@ namespace Maze
 
         public void CreateCell()
         {
-            if ( ! this.Completed )
-            {
-                MazeCell mc = new MazeCell();
 
-                if ( this.currentCell == null )
-                {
-                    int randomHeight = this.random.Next(this.Heigth);
-                    int randomWidth = this.random.Next(this.Width);
-                }
-                else
-                {
-                    // append to current head
-                }
-
-                if (this.CellCreated != null)
-                {
-                    this.CellCreated(this, new CellCreatedEventArgs() { Cell = mc } );
-                }
-            }
         }
 
         #endregion

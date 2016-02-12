@@ -19,6 +19,7 @@ namespace WindowsFormsApplication1
         Maze.Maze Maze;
         MazeDrawer MazeDrawer;
         MazeCell CurrentCell;
+        MazeController mazeController;
         ToolTip tooltip = new ToolTip();
         Timer timer = new Timer();
         bool stepping = false;
@@ -36,6 +37,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
 
             timer.Tick += timer_Tick;
+            this.mazeController = new MazeController();
         }
 
         #endregion
@@ -44,8 +46,8 @@ namespace WindowsFormsApplication1
 
         private void buttonNew_Click(object sender, EventArgs e)
         {
+            this.mazeController.CreateMaze ( this.panel1.CreateGraphics(), (int)numericUpDownPathSize.Value, (int)numericUpDownWallSize.Value);
             
-            this.Maze = new Maze.Maze();
         }
 
         private void buttonStepBuild_Click(object sender, EventArgs e)

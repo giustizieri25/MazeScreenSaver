@@ -46,6 +46,29 @@ namespace Maze
 
         #region Public Methods
 
+        public static Size CalculateSize(Graphics graphics, int pathSize, int wallSize)
+        {
+            Size size = new Size();
+
+            int grphicsWidth = (int)graphics.VisibleClipBounds.Width;
+            int graphicsHeight = (int)graphics.VisibleClipBounds.Height;
+
+            int computedSize = 0;
+            while (computedSize + pathSize + wallSize < grphicsWidth)
+            {
+                size.Width++;
+                computedSize = (size.Width * pathSize) + (size.Width - 1) * wallSize;
+            }
+
+            computedSize = 0;
+            while (computedSize + pathSize + wallSize < graphicsHeight)
+            {
+                size.Height++;
+                computedSize = (size.Height * pathSize) + (size.Height - 1) * wallSize;
+            }
+
+            return size;
+        }
 
         #endregion
 

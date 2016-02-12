@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Maze.cs" />
     <Compile Include="MazeCell.cs" />
+    <Compile Include="MazeController.cs" />
     <Compile Include="MazeDirection.cs" />
     <Compile Include="MazeDrawer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
